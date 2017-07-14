@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--<meta name="viewport" content="width-device-width">-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+        
+        {% load staticfiles %}
+        <link rel="stylesheet" href= "{% static 'music.css' %}">
+        
+        <title>Gallery</title>
+    </head>
+    <body>
+        <div class="container fluid">
+            <nav class="navbar">
+                <div class="navbar-header">
+                    <div class="col-md-1">
+                        <a class="navbar-brand" href="#">
+                            <img src="{% static 'notes.png' %}"> 
+                        </a>
+                    </div>
+                    <div class="col-md-10">
+                        <h4 class="navbar-text">Music Sheet</h4>
+                    </div>
+                </div>
+            </nav>
+            <div class="container fluid">
+                <div class="row">
+                    <div class="col-md-2">
+                        <ul class="nav nav-tabs nav-stacked">
+                            <li><a href="/">Back home</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-10 jumbotron">
+                        <div class="jumbotron"> 
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <h2>Welcome to the Gallery</h2>
+                                    <h4>Available sheets</h4>
+                                    <div class="row">
+                                        <br>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Author</th>
+                                                    <th>Document</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for item in query_results %}
+                                                <tr>
+                                                    <td>{{item.name}}</td>
+                                                    <td>{{item.author}}</td>
+                                                    <td>{{item.url}}</td>
+                                                    <td>{{item.deleted}}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <br>
+                                </div>
+                                <div class="row">
+                                    <h4>Deleted sheets</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Author</th>
+                                                    <th>Document</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for pr in query_results2 %}
+                                                <tr>
+                                                    <td>{{pr.name}}</td>
+                                                    <td>{{pr.author}}</td>
+                                                    <td>{{pr.url}}</td>
+                                                    <td>{{pr.deleted}}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="container">
+                    <p>Testing Django app</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
