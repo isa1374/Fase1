@@ -1,0 +1,1 @@
+web: gunicorn Mischung.wsgi --log-file -
